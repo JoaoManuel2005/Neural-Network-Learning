@@ -5,7 +5,7 @@
 
 class categorical_crossentropy : loss {
     public:
-        Eigen::MatrixXd forward(Eigen::MatrixXd y_pred, Eigen::MatrixXd y_true);
+        Eigen::MatrixXd forward(Eigen::MatrixXd y_pred, Eigen::Matrix<int, Eigen::Dynamic, Eigen::Dynamic> y_true);
     private:
         Eigen::MatrixXd dinputs;
         Eigen::MatrixXd dvalues;
