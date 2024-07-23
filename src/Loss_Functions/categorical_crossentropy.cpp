@@ -20,3 +20,23 @@ Eigen::MatrixXd categorical_crossentropy::forward(Eigen::MatrixXd y_pred, Eigen:
     }
     return negative_log_likelihoods;
 }
+
+void categorical_crossentropy::backward(Eigen::MatrixXd dvalues, Eigen::Matrix<int, Eigen::Dynamic, Eigen::Dynamic> y_true) {
+    int samples = dvalues.size();
+    int labels = dvalues.row(0).size();
+
+    // check if ground truth labels are sparse. e.g. (1, 0, 2) if so turn into one-hot encoded
+    if (y_true.rows() == 1) {
+        Eigen::MatrixXd temp = Eigen::MatrixXd::Identity(labels, labels);
+        Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> placeholder;
+        for (int i = 0; i<labels; i++) {
+            placeholder.row(i) = temp.row(y_true(0,i));
+        }
+        y_true = placeholder;
+    }
+
+    // compute derivate of loss function with respect to its inputs 
+    // dLoss = -yij (ground truth values) / yhatij (predicted values)
+    dinputs = -y_true * dvalues.inverse();
+    dinputs = dinputs * samples;
+}

@@ -17,3 +17,8 @@ void Softmax::forward(Eigen::MatrixXd inputs) {
     }
     this->output = probabilities;
 }
+
+void Softmax::backward(Eigen::MatrixXd dvalues) {
+    dinputs = Eigen::MatrixXd(dvalues.rows(), dvalues.cols());
+    
+}
