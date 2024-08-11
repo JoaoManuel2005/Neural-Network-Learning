@@ -1,10 +1,12 @@
 import nnfs
-from nnfs.datasets import spiral_data
+from nnfs.datasets import spiral_data, sine_data
 
 nnfs.init()
 
-def spiral(sample, clas):
+def get_spiral(sample, clas):
     X, y = spiral_data(samples=sample, classes=clas)
     return X, y
 
-a = 'change'
+def get_sine():
+    X, y = sine_data()
+    return X, y

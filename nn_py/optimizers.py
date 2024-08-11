@@ -144,7 +144,7 @@ class Optimizer_Adam:
         self.beta_1 = beta_1
         self.beta_2 = beta_2
 
-    def pre_udpate_params(self):
+    def pre_update_params(self):
 
         # before each update, decay learning rate by one iteration
 
