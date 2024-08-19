@@ -96,9 +96,6 @@ model.train_model(X, y, epochs=10000, print_frequency=1000, validation_data=(X_t
 
 # ###############
 
-
-
-
 # #y = y.reshape(-1, 1)
 
 # optimizer = Optimizer_Adam(learning_rate=0.005, decay=1e-3)

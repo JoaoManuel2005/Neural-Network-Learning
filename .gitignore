@@ -1,3 +1,5 @@
 build
 .vscode
 jupyter-notebooks/
+fashion_mnist_images
+fashion_mnist_images.zip
