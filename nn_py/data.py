@@ -31,10 +31,27 @@ def get_MNIST():
     
     print('Done!')
 
-def load_MNIST_image_data():
-    image_data = cv2.imread('fashion_mnist_images/train/7/0002.png',
+def load_MNIST_image_data(dataset, path):
+    labels = os.listdir(os.path.join(path, dataset))
+    X = []
+    y = []
+    for label in labels:
+        if label == '.DS_Store':
+            continue
+        for file in os.listdir(os.path.join(path, dataset, label)):
+            if file == '.DS_Store':
+                continue
+            image = cv2.imread(os.path.join(path, dataset, label, file),
                             cv2.IMREAD_UNCHANGED)
-    print(image_data)
+            X.append(image)
+            y.append(label)
+
+    return np.array(X), np.array(y).astype('uint8')
+
+def create_data_mnist(path):
+    X, y = load_MNIST_image_data('train', path)
+    X_test, y_test = load_MNIST_image_data('test', path)
+
+    return X, y, X_test, y_test
 
 
-load_MNIST_image_data()
