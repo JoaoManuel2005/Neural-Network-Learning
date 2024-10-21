@@ -3,3 +3,6 @@ build
 jupyter-notebooks/
 fashion_mnist_images
 fashion_mnist_images.zip
+__pycache__/
+.DS_Store
+nn_py/.DS_Store

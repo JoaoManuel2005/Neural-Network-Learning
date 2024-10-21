@@ -119,7 +119,6 @@ model.add_layer(Activation_ReLU())
 model.add_layer(Layer_Dense(64, 10))
 model.add_layer(Activation_Softmax())
 
-
 model.set_loss_optimizer_and_accuracy(
     loss=Loss_CategoricalCrossentropy(),
     optimizer=Optimizer_Adam(decay=5e-5),
